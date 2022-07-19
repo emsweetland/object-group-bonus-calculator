@@ -40,3 +40,110 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+
+for (let person of employees){
+  console.log(calcBonus(person))
+}
+
+function calcBonus (person){
+  let upd8 = {};
+      upd8.name = person.name;
+      //console.log('ratingBonus is',ratingBonus(person))
+      upd8.bonus = ratingBonus(person);
+      //console.log('Total to subtract from Bonus', upd8.bonus*(salaryBonus(person)));
+      upd8.bonus -= upd8.bonus*(salaryBonus(person));
+      upd8.bonus += numberBonus(person);
+      upd8.totalBonus = Math.round(upd8.bonus);
+      //console.log('Current Bonus is', upd8.bonus);
+      //console.log('13 percent of salary is', .13 * person.annualSalary);
+      if (upd8.totalBonus > .13 * person.annualSalary){
+        upd8.bonus = .13 * person.annualSalary;
+      }
+      upd8.totalComp = upd8.totalBonus + Number(person.annualSalary);
+  return upd8;
+}
+
+// console.log(calcBonus(employees[2]));
+
+function ratingBonus (employee){
+let bonus = 0;
+ if (employee.reviewRating <= 2){
+  bonus = 0;};
+ if (employee.reviewRating === 3){
+  bonus = employee.annualSalary *.04;};
+ if (employee.reviewRating === 4){
+  bonus = employee.annualSalary  *.06;};
+  if (employee.reviewRating === 5){
+  bonus = employee.annualSalary * .1;};
+  return bonus}
+
+function salaryBonus (employee){
+  let factor = 0;
+  if (employee.annualSalary >= 65000){
+    factor = -.01;
+  }
+  return factor;
+}
+
+function numberBonus (employee){
+  let bonus = 0;
+  //console.log(employee.employeeNumber);
+  if (employee.employeeNumber < 10000 && employee.employeeNumber > 999){
+   bonus += employee.annualSalary * .05
+  }
+  return bonus;
+}
+
+
+
+//console.log(numberBonus(employees[2]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log (calcBonus(employees[0]))
+
+// function calcRating (salary){
+//     let ratingBonus = 0;
+//   {if(employee.reviewRating <= 2) {
+//     ratingBonus = 0;
+//     console.log(ratingBonus);
+//   }
+//   if(employee.reviewRating === 3) {
+//     ratingBonus = employee.salary * .04;
+//     console.log(ratingBonus);
+//   }
+//   if(employee.reviewRating ===4) {
+//     ratingBonus = employee.salary * .06;
+//     console.log(ratingBonus);
+//   }
+//   if(employee.reviewRating === 5) {
+//     ratingBonus = employee.salary * .10;
+//     console.log(ratingBonus);
+//   }
+// return ratingBonus;
+//   }}
