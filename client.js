@@ -1,3 +1,9 @@
+$ (document).ready(readyNow);
+
+function readyNow(){
+  $('#calculate').on('click', onClick);
+}
+
 const employees = [
   {
     name: 'Atticus',
@@ -95,17 +101,15 @@ function numberBonus (employee){
 }
 
 
-
-//console.log(numberBonus(employees[2]));
-
-
-
-
-
-
-
-
-
+function onClick(){
+  let el=$('#bonuses');
+  el.empty();
+  for (let person of employees){
+   console.log(calcBonus(person));
+    el.append(`<li>`+ calcBonus(person).name, 'Bonus: ', calcBonus(person).totalBonus,', Total Comp: ', 
+    calcBonus(person).totalComp);
+  }
+};
 
 
 
@@ -118,32 +122,3 @@ function numberBonus (employee){
 
 
 
-
-
-
-
-
-
-
-// console.log (calcBonus(employees[0]))
-
-// function calcRating (salary){
-//     let ratingBonus = 0;
-//   {if(employee.reviewRating <= 2) {
-//     ratingBonus = 0;
-//     console.log(ratingBonus);
-//   }
-//   if(employee.reviewRating === 3) {
-//     ratingBonus = employee.salary * .04;
-//     console.log(ratingBonus);
-//   }
-//   if(employee.reviewRating ===4) {
-//     ratingBonus = employee.salary * .06;
-//     console.log(ratingBonus);
-//   }
-//   if(employee.reviewRating === 5) {
-//     ratingBonus = employee.salary * .10;
-//     console.log(ratingBonus);
-//   }
-// return ratingBonus;
-//   }}
